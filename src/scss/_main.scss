@@ -1,0 +1,288 @@
+html {
+	height: 100%;
+	-webkit-text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+body {
+	min-height: 100%;
+	height: 100%;
+	font: 18px/24px $roboto;
+	color: $text-color;
+	background: $bg-color;
+}
+h1 {
+	font: 44px/48px $opensans;
+	text-transform: uppercase;
+}
+h2 {
+	font: 40px/60px $badscript;
+	margin: 0 0 20px 0;
+}
+img {
+	width: 100%;
+	height: auto;
+}
+.cont {
+	padding: 50px 15px;
+}
+
+.first-screen {
+	min-height: 400px;
+	max-height: 700px;
+	height: 100%;
+	position: relative;
+	color: $bg-color;
+	text-align: center;
+	background: url(/images/first-screen.jpg) no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+
+	&:before {
+		content: '';
+		width: 100%;
+		max-height: 700px;
+		height: 100%;
+		position: absolute;
+		display: block;
+		top: 0;
+		left: 50%;
+		margin: 0 0 0 -50%;
+		background: rgba(76, 15, 45, 0.5);
+		z-index: 1;
+	}
+
+	.head-info {
+		width: 100%;
+		position: absolute;
+		top: 30%;
+		text-shadow: $text-shadow;
+	  z-index: 2;
+	  
+	  .desc {
+	  	font-size: 20px;
+	  	font-weight: 300;
+	  	margin: 50px 0 0 0;
+	  }
+	}
+	
+	.button {
+		position: absolute;
+    bottom: 10%;
+    width: 100%;
+    z-index: 2;
+	}
+}
+
+.about {
+	
+	.img {
+		width: 90%;
+		max-width: 400px;
+		margin: 0 auto 20px;
+		
+		img {
+			clip-path: circle(at 50% 50%);
+		}
+	}
+	.text {
+		font-size: 16px;
+		line-height: 24px;
+		text-align: center; 
+	}
+}
+
+.works {
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
+	
+	.button {
+		margin: 50px 0 20px 0;
+	}
+}
+
+.offer {
+	color: $bg-color;
+	font-weight: 300;
+	text-align: center;
+	padding: 130px 20px;
+	clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
+	background: $main-color;
+	
+	h2 {
+		text-shadow: $text-shadow;
+	}
+
+	.price {
+		font-size: 60px;
+		line-height: 80px;
+		margin: 0 0 20px 0;
+		text-shadow: $text-shadow;
+	}
+}
+
+.why-me {
+	text-align: center;
+	
+	.block {
+		width: 90%;
+		margin: 0 auto 50px;
+		
+		.img {
+			width: 70px;
+			margin: 0 auto 10px;
+		}
+		h3 {
+			font-weight: bold;
+			margin: 0 0 10px 0;
+		}
+		.text {
+			font-size: 16px;
+		}
+	}
+}
+
+.video {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.testimonials {
+	max-width: 700px;
+	margin: 0 auto;
+	text-align: center;
+	
+	.owl-item {
+		.img {
+			width: 70%;
+			max-width: 300px;
+			margin: 0 auto 25px;
+			
+			img {
+				clip-path: circle(at 50% 50%);
+			}
+		}
+		.text {
+			font-size: 14px;
+			line-height: 20px;
+			margin: 0 0 10px 0;
+		}
+		.link {
+			padding: 0 0 5px 0;
+			
+			a {
+				color: $main-color;
+				font-size: 16px;
+				text-decoration: none;
+				padding: 0 0 5px 0;
+				border-bottom: 1px solid lighten($main-color, 20%);
+			}
+		}
+	}
+	.owl-dots {
+		margin-top: 20px !important;
+	}
+}
+
+.contacts {
+	color: $bg-color;
+	font-weight: 300;
+	text-align: center;
+	padding: 130px 20px;
+	clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
+	background: $main-color;
+	
+	h2 {
+		text-shadow: $text-shadow;
+	}
+	.method {
+		text-align: center;
+		margin: 40px 0;
+		display: inline-block;
+		
+		a {
+			width: 50px;
+			height: 50px;
+			margin: 0 8px;
+			display: block;
+			border-radius: 50px;
+			box-shadow: $box-shadow;
+			
+			&.vk {
+				background: url(/images/vk.svg) no-repeat;
+				background-size: contain;
+			}
+			&.telegram {
+				background: url(/images/telegram.svg) no-repeat;
+				background-size: contain;
+			}
+			&.whatsapp {
+				background: url(/images/whatsapp.svg) no-repeat;
+				background-size: contain;
+			}
+		}
+	}
+	.phone {
+		font-size: 30px;
+		text-shadow: $text-shadow;
+		
+		a {
+			color: $bg-color;
+			text-decoration: none;
+		}
+	}
+}
+
+footer {
+	color: $bg-color;
+	font-size: 12px;
+	line-height: 18px;
+	padding: 10px 20px 5px;
+	background: $text-color;
+	position: relative;
+	
+	&:before {
+    content: '';
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    top: -200%;
+    left: 0;
+    background: $text-color;
+    z-index: -1;
+	}
+
+	.inner {
+		overflow: hidden;
+	}
+	
+	.socials {
+		float: right;
+		a {
+			width: 32px;
+			height: 32px;
+			margin: 0 5px;
+			display: inline-block;
+			
+			&.vk {
+				background: url(/images/vk-footer.svg) no-repeat;
+				background-size: contain;
+			}
+			&.ig {
+				background: url(/images/instagram.svg) no-repeat;
+				background-size: contain;
+			}
+		}
+		
+	}
+	.nonetype {
+		float: left;
+		a {
+			color: $main-color;
+			line-height: 32px;
+			text-decoration: none;
+		}
+	}
+}
