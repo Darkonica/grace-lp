@@ -64,27 +64,35 @@ h2 {
   font: 40px/60px "Bad Script", sans-serif;
   margin: 0 0 20px 0; }
 
+@media screen and (min-width: 700px) {
+  h2 {
+    font-size: 48px;
+    margin: 0 0 30px 0; } }
+
 img {
   width: 100%;
   height: auto; }
 
 .cont {
   padding: 50px 15px; }
+  @media screen and (min-width: 700px) {
+    .cont {
+      padding: 60px 25px; } }
 
 .first-screen {
-  min-height: 400px;
+  min-height: 460px;
   max-height: 700px;
-  height: 100%;
+  height: 100vh;
   position: relative;
   color: #f2ebeb;
   text-align: center;
-  background: url(/images/first-screen.jpg) no-repeat;
-  background-position: 50% 50%;
-  background-size: cover; }
+  background: url(../images/first-screen.jpg) no-repeat;
+  background-position: 50% 20%;
+  background-size: cover;
+  overflow: hidden; }
   .first-screen:before {
     content: '';
     width: 100%;
-    max-height: 700px;
     height: 100%;
     position: absolute;
     display: block;
@@ -93,36 +101,76 @@ img {
     margin: 0 0 0 -50%;
     background: rgba(76, 15, 45, 0.5);
     z-index: 1; }
+  @media screen and (min-width: 1100px) {
+    .first-screen {
+      background-position: 50% 35%; }
+      .first-screen:before {
+        background: rgba(76, 15, 45, 0.7); } }
   .first-screen .head-info {
     width: 100%;
     position: absolute;
     top: 30%;
     text-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
     z-index: 2; }
     .first-screen .head-info .desc {
       font-size: 20px;
+      line-height: 1.2;
       font-weight: 300;
       margin: 50px 0 0 0; }
+    .first-screen .head-info span {
+      display: block; }
+    @media screen and (min-width: 500px) {
+      .first-screen .head-info h1 {
+        font-size: 60px;
+        line-height: 1; }
+      .first-screen .head-info .desc {
+        font-size: 24px; } }
+    @media screen and (min-width: 700px) {
+      .first-screen .head-info h1 {
+        font-size: 72px; } }
+    @media screen and (min-width: 1100px) {
+      .first-screen .head-info {
+        top: 25%; }
+        .first-screen .head-info h1 {
+          font-size: 80px; }
+        .first-screen .head-info .desc span {
+          display: inline; } }
   .first-screen .button {
     position: absolute;
     bottom: 10%;
     width: 100%;
     z-index: 2; }
+    @media screen and (min-width: 1100px) {
+      .first-screen .button {
+        bottom: 12%; }
+        .first-screen .button a {
+          font-size: 20px;
+          padding: 18px 60px; } }
 
-.about .img {
-  width: 90%;
-  max-width: 400px;
-  margin: 0 auto 20px; }
-  .about .img img {
-    clip-path: circle(at 50% 50%); }
-
-.about .text {
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center; }
+.about {
+  max-width: 900px;
+  margin: 0 auto; }
+  .about .img {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto 20px; }
+    .about .img img {
+      -webkit-clip-path: circle(at 50% 50%);
+      clip-path: circle(at 50% 50%); }
+  .about .text {
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; }
+  @media screen and (min-width: 700px) {
+    .about .img {
+      margin: 0 auto 40px; }
+    .about .text {
+      font-size: 18px;
+      line-height: 28px; } }
 
 .works {
-  max-width: 800px;
+  max-width: 500px;
   margin: 0 auto;
   text-align: center; }
   .works .button {
@@ -132,7 +180,8 @@ img {
   color: #f2ebeb;
   font-weight: 300;
   text-align: center;
-  padding: 130px 20px;
+  padding: 130px 15px;
+  -webkit-clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
   clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
   background: #c34366; }
   .offer h2 {
@@ -144,10 +193,19 @@ img {
     text-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3); }
 
 .why-me {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center; }
   .why-me .block {
     width: 90%;
     margin: 0 auto 50px; }
+    @media screen and (min-width: 700px) {
+      .why-me .block {
+        width: 43%;
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 3%;
+        box-sizing: border-box; } }
     .why-me .block .img {
       width: 70px;
       margin: 0 auto 10px; }
@@ -162,7 +220,7 @@ img {
   margin: 0 auto; }
 
 .testimonials {
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center; }
   .testimonials .owl-item .img {
@@ -170,6 +228,7 @@ img {
     max-width: 300px;
     margin: 0 auto 25px; }
     .testimonials .owl-item .img img {
+      -webkit-clip-path: circle(at 50% 50%);
       clip-path: circle(at 50% 50%); }
   .testimonials .owl-item .text {
     font-size: 14px;
@@ -190,7 +249,8 @@ img {
   color: #f2ebeb;
   font-weight: 300;
   text-align: center;
-  padding: 130px 20px;
+  padding: 130px 15px;
+  -webkit-clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
   clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0% 100%);
   background: #c34366; }
   .contacts h2 {
@@ -207,13 +267,13 @@ img {
       border-radius: 50px;
       box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3); }
       .contacts .method a.vk {
-        background: url(/images/vk.svg) no-repeat;
+        background: url(../images/vk.svg) no-repeat;
         background-size: contain; }
       .contacts .method a.telegram {
-        background: url(/images/telegram.svg) no-repeat;
+        background: url(../images/telegram.svg) no-repeat;
         background-size: contain; }
       .contacts .method a.whatsapp {
-        background: url(/images/whatsapp.svg) no-repeat;
+        background: url(../images/whatsapp.svg) no-repeat;
         background-size: contain; }
   .contacts .phone {
     font-size: 30px;
@@ -226,7 +286,7 @@ footer {
   color: #f2ebeb;
   font-size: 12px;
   line-height: 18px;
-  padding: 10px 20px 5px;
+  padding: 10px 15px 5px;
   background: #332126;
   position: relative; }
   footer:before {
@@ -238,6 +298,9 @@ footer {
     left: 0;
     background: #332126;
     z-index: -1; }
+  @media screen and (min-width: 700px) {
+    footer {
+      padding: 10px 25px 5px; } }
   footer .inner {
     overflow: hidden; }
   footer .socials {
@@ -248,10 +311,10 @@ footer {
       margin: 0 5px;
       display: inline-block; }
       footer .socials a.vk {
-        background: url(/images/vk-footer.svg) no-repeat;
+        background: url(../images/vk-footer.svg) no-repeat;
         background-size: contain; }
       footer .socials a.ig {
-        background: url(/images/instagram.svg) no-repeat;
+        background: url(../images/instagram.svg) no-repeat;
         background-size: contain; }
   footer .nonetype {
     float: left; }
@@ -266,7 +329,7 @@ footer {
   text-decoration: none;
   background: #c34366;
   padding: 15px 50px;
-  border-radius: 25px;
+  border-radius: 50px;
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3); }
 
 .button.white {

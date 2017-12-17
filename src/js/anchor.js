@@ -2,7 +2,7 @@
  * Automatically executed if DOM is ready
  */
 $(function() {
-    $('a[href*=\\#]').anchor({
+    $('a[href*=\\#]:not([href=\\#])').anchor({
         transitionDuration : 1200
     });
 });

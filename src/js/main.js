@@ -1,4 +1,6 @@
 $(function() {
+  $('.first-screen').css("height", $(window).height());
+  
   $('.owl-carousel').owlCarousel({
     loop:true,
     autoplay:true,
@@ -25,16 +27,16 @@ $(function() {
     e.preventDefault();
     const maxLength = (stackPhotos.length < 4 ? stackPhotos.length : 4);
     for (let i = 0; i < maxLength; i++) {
-      $('.works-block').append('<img src="/images/portfolio/' + stackPhotos[0] + '">');
+      $('.works-block').append('<img src="images/portfolio/' + stackPhotos[0] + '">');
       stackPhotos.shift();
     }
     if (maxLength < 4 || stackPhotos.length === 0) { $(this).css("display", "none"); } 
   });
 
-  $('video').removeAttr('controls');
+  // $('video').removeAttr('controls');
   $('video').click(function(){
     this.paused ? this.play() : this.pause();
-    this.setAttribute('controls', 'controls');
+    // this.setAttribute('controls', 'controls');
   });
 
 });
