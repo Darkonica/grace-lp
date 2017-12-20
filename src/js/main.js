@@ -1,6 +1,6 @@
 $(function() {
   $('.first-screen').css("height", $(window).height());
-  
+
   $('.owl-carousel').owlCarousel({
     loop:true,
     autoplay:true,
@@ -25,9 +25,14 @@ $(function() {
 
   $('#more-works').click(function(e){
     e.preventDefault();
+    var grid = document.querySelector('.works-block');
+
     const maxLength = (stackPhotos.length < 4 ? stackPhotos.length : 4);
     for (let i = 0; i < maxLength; i++) {
-      $('.works-block').append('<img src="images/portfolio/' + stackPhotos[0] + '">');
+      var item = document.createElement('div');
+    
+      salvattore.appendElements(grid, [item]);
+      item.outerHTML = '<img src="images/portfolio/' + stackPhotos[0] + '">';
       stackPhotos.shift();
     }
     if (maxLength < 4 || stackPhotos.length === 0) { $(this).css("display", "none"); } 

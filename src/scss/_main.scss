@@ -40,7 +40,7 @@ img {
 
 .first-screen {
 	min-height: 460px;
-	max-height: 700px;
+	max-height: 750px;
 	height: 100vh;
 	position: relative;
 	color: $bg-color;
@@ -166,10 +166,19 @@ img {
 }
 
 .works {
-	max-width: 500px;
+	max-width: 1200px;
 	margin: 0 auto;
 	text-align: center;
 
+	.works-block {
+		overflow: hidden;
+		line-height: 0;
+		
+		img {
+				padding: 2px;
+				box-sizing: border-box;
+		}
+	}
 	
 	.button {
 		margin: 50px 0 20px 0;

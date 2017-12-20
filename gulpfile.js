@@ -2,13 +2,15 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var babel = require('gulp-babel');
 var browserSync = require('browser-sync');
 var useref = require('gulp-useref');
-var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
 var gutil = require('gulp-util');
 var cssnano = require('gulp-cssnano');
+var autoprefixer = require('gulp-autoprefixer');
+var critical = require('critical').stream;
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
@@ -29,6 +31,11 @@ gulp.task('browserSync', function() {
 gulp.task('sass', function() {
   return gulp.src('src/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
     .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
+    .pipe(cssnano())
+    .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+    }))
     .pipe(gulp.dest('build/css')) // Outputs it in the css folder
     .pipe(gulp.dest('src/css'))
     .pipe(browserSync.reload({ // Reloading with Browser Sync
@@ -48,19 +55,19 @@ gulp.task('watch', function() {
 
 // Optimizing CSS and JavaScript 
 gulp.task('useref', function() {
-
   return gulp.src('src/*.html')
     .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
-    .pipe(gulpIf('*.css', cssnano()))
+    .pipe(gulpIf('*.js', babel())) // notice the error event here))
+    // .pipe(gulpIf('*.css', cssnano()))
     .pipe(gulp.dest('build'));
 });
 
 gulp.task('scripts', function() {
-  return gulp.src(['src/js/*.js'])
-    .pipe(concat('main.js'))
-    .pipe(gulp.dest('build/js'));
+  return gulp.src('build/js/main.min.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('build/js/'));
 });
+
 
 // Optimizing Images 
 gulp.task('images', function() {
@@ -95,6 +102,14 @@ gulp.task('clean:build', function() {
   return del.sync(['build/**/*', '!build/images', '!build/images/**/*']);
 });
 
+// Generate & Inline Critical-path CSS
+gulp.task('critical', function () {
+    return gulp.src('build/*.html')
+        .pipe(critical({base: 'build/', inline: true, minify: true, css: 'build/css/styles.css', ignore: ['@import']}))
+        .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+        .pipe(gulp.dest('build'));
+});
+
 // Build Sequences
 // ---------------
 
@@ -107,9 +122,9 @@ gulp.task('default', function(callback) {
 gulp.task('build', function(callback) {
   runSequence(
     'clean:build',
-    'sass',
+    ['sass', 'useref', 'images', 'fonts', 'video'],
+    'critical',
     'scripts',
-    ['useref', 'images', 'fonts', 'video'],
     callback
   )
 })
